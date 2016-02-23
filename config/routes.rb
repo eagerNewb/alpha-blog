@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   root 'pages#home'    #root_path returns index root
   get  'about', to: 'pages#about' #about_path returns root/about
+ 
+  resources :articles #give me all the actions to create,read, update,delete articles
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
