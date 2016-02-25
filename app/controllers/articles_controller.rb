@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+
+
   def index
   	@articles = Article.all
   end
@@ -8,7 +11,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def create
@@ -29,22 +31,23 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was successfully updated"
       redirect_to article_path(@article)
    else
-   	  render 'edit'
+   	render 'edit'
    end
   end
 
   def show
-	 @article = Article.find(params[:id]) #grabs the id of the article from the params hash  	
   end
 
   def destroy
-   @article = Article.find(params[:id])
    @article.destroy
     flash[:notice] = "Article was successfully deleted"
   	redirect_to articles_path
   end
   
   private
+  def set_article
+    @article = Article.find(params[:id]) #get the id of the article
+  end
   def article_params #method
   	params.require(:article).permit(:title,:description) #top lvl key is article, permit the values of title and description
   end
