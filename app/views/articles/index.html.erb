@@ -12,6 +12,7 @@
 		<td colspan="" rowspan="" headers=""><%= article.description %></td>
 		<td colspan="" rowspan="" headers=""><%= link_to 'Edit', edit_article_path(article) %></td>
 		<td colspan="" rowspan="" headers=""><%= link_to 'Show', article_path(article)%></td>
+		<td colspan="" rowspan="" headers=""><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></td>
 	</tr>
 	<% end %>
 </table>
