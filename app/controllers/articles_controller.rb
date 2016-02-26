@@ -20,9 +20,9 @@ class ArticlesController < ApplicationController
   	  flash['success'] = "Article was successfully created"
       redirect_to article_path(@article)
   	else
-
   	  render 'new'
   	end
+
   end
 
   def update
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
    else
    	render 'edit'
    end
-  end
+  end 
 
   def show
   end
@@ -51,7 +51,5 @@ class ArticlesController < ApplicationController
   def article_params #method
   	params.require(:article).permit(:title,:description) #top lvl key is article, permit the values of title and description
   end
-
-
 
 end
