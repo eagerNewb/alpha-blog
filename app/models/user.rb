@@ -1,8 +1,14 @@
 class User < ActiveRecord::Base
+  has_many :articles
+  
+  #before saving turns the email to lowercase
+  before_save { self.email = email.downcase }
+  
   #no users without username, username length must be between 3 and 25. 
   #username is unique and is not case sensitive. Example: user = "joe", user2 = "Joe" NOT POSSIBLE 
   validates :username, presence: true, uniqueness: { case_sensitive: false },  
   			length: {minimum: 3, maximum: 25}
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
   validates :email, presence: true, length: {maximum: 105},
   			uniqueness: { case_sensitive: false },
