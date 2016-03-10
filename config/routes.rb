@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get  'about', to: 'pages#about' #about_path returns root/about
  
   resources :articles #give me all the actions to create,read, update,delete articles
+
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new] # all the route for users except new
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
