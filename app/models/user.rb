@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :articles
-  
+  has_many :articles  
   #before saving turns the email to lowercase
   before_save { self.email = email.downcase }
   

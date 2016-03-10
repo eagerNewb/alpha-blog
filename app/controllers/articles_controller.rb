@@ -14,9 +14,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    # debugger - look at console and use commands such as article_params, n(new line)
   	# render plain: params[:article].inspect #displays the passed parameters on form submit
   	@article = Article.new(article_params)
-    @article.user = User.first 
+    @article.user = User.first  #hardcodng user value
   	if @article.save
   	  flash['success'] = "Article was successfully created"
       redirect_to article_path(@article)
